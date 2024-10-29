@@ -1,0 +1,132 @@
+/* Reset Default Box Model Behavior */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Body Styling For Light And Dark Modes */
+body {
+    display: flex; /* FlexBox Layout For Centering Content */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full ViewPort Height */
+    width: 100vw; /* Full ViewPort Width */
+    transition: background-color 0.3s, color 0.3s; /* Smooth Transition For Background And Text Color */
+}
+
+/* Light Mode Styling */
+body.light-mode {
+    background-color: #f7f9fc; /* Light Background */
+    color: #333; /* Dark Text */
+}
+
+/* Dark Mode Styling */
+body.dark-mode {
+    background-color: #1e1e1e; /* Dark Background */
+    color: #ffffff; /* Light Text */
+}
+
+/* Container Styling For Main Content */
+.container {
+    display: flex;
+    flex-direction: column; /* Stack Children Vertically */
+    justify-content: center;
+    align-items: stretch; /* Stretch To Fill Width */
+    width: 100%; /* Full Width */
+    height: 100%; /* Full Height */
+    padding: 20px; /* Padding Around Content */
+    background-color: #ffffff; /* Default Background */
+    transition: background-color 0.3s, color 0.3s; /* Smooth Transition For Background And Text Color */
+}
+
+/* Container Styling In Dark Mode */
+body.dark-mode .container {
+    background-color: #2c2c2c; /* Dark Background For Container */
+}
+
+/* Header Styling */
+h1 {
+    font-size: 2.5em; /* Large Font Size */
+    margin-bottom: 10px; /* Spacing Below Header */
+    text-align: center; /* Center Text */
+}
+
+/* Paragraph Styling */
+p {
+    margin-bottom: 20px; /* Spacing Below Paragraph */
+    text-align: center; /* Center Text */
+}
+
+/* Toggle Button Container Styling */
+.toggle-container {
+    text-align: center; /* Center Toggle Button */
+    margin-bottom: 20px; /* Spacing Below Toggle Container */
+}
+
+/* Toggle Button Styling */
+.toggle-button {
+    background-color: #007bff; /* Blue Background */
+    color: white; /* White Text */
+    border: 2px solid #007bff; /* Blue Border */
+    border-radius: 0; /* Square Corners */
+    padding: 10px; /* Padding For Button */
+    font-size: 1em; /* Font Size */
+    cursor: pointer; /* Pointer Cursor On Hover */
+    width: 100%; /* Full Width */
+    transition: background-color 0.3s; /* Smooth Background Color Transition */
+}
+
+/* Toggle Button Hover Effect */
+.toggle-button:hover {
+    background-color: #0056b3; /* Darker Blue On Hover */
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column; /* Stack Form Elements Vertically */
+    width: 100%; /* Full Width */
+}
+
+/* Label Styling */
+label {
+    font-weight: bold; /* Bold Text For Labels */
+    margin-top: 15px; /* Spacing Above Labels */
+}
+
+/* Input And Button Styling */
+input[type="number"],
+button {
+    padding: 10px; /* Padding For Input And Button */
+    font-size: 1em; /* Font Size */
+    border: 2px solid #ccc; /* Light Gray Border */
+    border-radius: 0; /* Square Corners */
+    margin-top: 5px; /* Spacing Above Inputs/Buttons */
+    width: 100%; /* Full Width */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth Transition For Background And Border Color */
+}
+
+/* Dark Mode Styling For Inputs And Buttons */
+body.dark-mode input[type="number"],
+body.dark-mode button {
+    background-color: #333; /* Dark Background For Inputs/Buttons */
+    border-color: #555; /* Darker Border */
+    color: #fff; /* Light Text Color */
+}
+
+/* General Button Styling */
+button {
+    cursor: pointer; /* Pointer Cursor On Hover */
+    background-color: #007bff; /* Blue Background */
+    color: white; /* White Text */
+    border: none; /* No Border */
+    font-weight: bold; /* Bold Text */
+    margin-top: 20px; /* Spacing Above Button */
+}
+
+/* Button Hover Effect */
+button:hover {
+    background-color: #0056b3; /* Darker Blue On Hover */
+}
+

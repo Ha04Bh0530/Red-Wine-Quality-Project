@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Quality Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Style.css') }}">
+</head>
+<body class="light-mode">
+    <div class="container">
+        <h1>Wine Quality Prediction</h1>
+        <p>Enter The Wine Characteristics Below To Predict Its Quality.</p>
+
+        <!-- Dark Mode Toggle Button -->
+        <div class="toggle-container">
+            <button id="theme-toggle" class="toggle-button">Switch To Dark Mode</button>
+        </div>
+
+        <form action="/predict" method="post">
+            <label>Fixed Acidity:</label>
+            <input type="number" step="0.01" name="fixed_acidity" required>
+
+            <label>Volatile Acidity:</label>
+            <input type="number" step="0.01" name="volatile_acidity" required>
+
+            <label>Citric Acid:</label>
+            <input type="number" step="0.01" name="citric_acid" required>
+
+            <label>Residual Sugar:</label>
+            <input type="number" step="0.01" name="residual_sugar" required>
+
+            <label>Chlorides:</label>
+            <input type="number" step="0.01" name="chlorides" required>
+
+            <label>Free Sulfur Dioxide:</label>
+            <input type="number" step="1" name="free_sulfur_dioxide" required>
+
+            <label>Total Sulfur Dioxide:</label>
+            <input type="number" step="1" name="total_sulfur_dioxide" required>
+
+            <label>Density:</label>
+            <input type="number" step="0.0001" name="density" required>
+
+            <label>pH:</label>
+            <input type="number" step="0.01" name="ph" required>
+
+            <label>Sulphates:</label>
+            <input type="number" step="0.01" name="sulphates" required>
+
+            <label>Alcohol:</label>
+            <input type="number" step="0.01" name="alcohol" required>
+
+            <button type="submit">Predict Quality</button>
+        </form>
+        <h2>{{ prediction_text }}</h2>
+    </div>
+
+    <!-- JavaScript For Theme Toggling -->
+    <script>
+        const toggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+
+            // Change Button Text Based On Current Theme
+            if (body.classList.contains('dark-mode')) {
+                toggleButton.innerText = "Switch To Light Mode";
+            } else {
+                toggleButton.innerText = "Switch To Dark Mode";
+            }
+        });
+    </script>
+</body>
+</html>
+
