@@ -11,7 +11,7 @@ App = Flask(__name__, template_folder='Templates', static_folder='Static')
 
 # Load the trained model and scaler.
 Model = JobLib.load('Models/Best_SVC_Wine_Model.pkl')
-Scaler = JobLib.load('Models/Scaler.pkl')
+Scaler = JobLib.load('Models/Scaler_SVC.pkl')
 
 @App.route('/')
 def Home():
