@@ -3,60 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wine Quality Prediction</title>
+    <title>Wine Quality Predictor</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='Style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="light-mode">
     <div class="container">
-        <h1>Wine Quality Prediction</h1>
-        <p>Enter The Wine Characteristics Below To Predict Its Quality.</p>
+        <header>
+            <h1>🍷 Wine Quality Predictor</h1>
+            <p>Provide the characteristics of the wine below to predict its quality.</p>
+        </header>
 
-        <!-- Dark Mode Toggle Button -->
+        <!-- Dark Mode Toggle -->
         <div class="toggle-container">
-            <button id="theme-toggle" class="toggle-button">Switch To Dark Mode</button>
+            <button id="theme-toggle" class="toggle-button">🌗 Switch To Dark Mode</button>
         </div>
 
+        <!-- Input Form -->
         <form action="/predict" method="post">
-            <label>Fixed Acidity:</label>
-            <input type="number" step="0.01" name="fixed_acidity" required>
-
-            <label>Volatile Acidity:</label>
-            <input type="number" step="0.01" name="volatile_acidity" required>
-
-            <label>Citric Acid:</label>
-            <input type="number" step="0.01" name="citric_acid" required>
-
-            <label>Residual Sugar:</label>
-            <input type="number" step="0.01" name="residual_sugar" required>
-
-            <label>Chlorides:</label>
-            <input type="number" step="0.01" name="chlorides" required>
-
-            <label>Free Sulfur Dioxide:</label>
-            <input type="number" step="1" name="free_sulfur_dioxide" required>
-
-            <label>Total Sulfur Dioxide:</label>
-            <input type="number" step="1" name="total_sulfur_dioxide" required>
-
-            <label>Density:</label>
-            <input type="number" step="0.0001" name="density" required>
-
-            <label>pH:</label>
-            <input type="number" step="0.01" name="ph" required>
-
-            <label>Sulphates:</label>
-            <input type="number" step="0.01" name="sulphates" required>
-
-            <label>Alcohol:</label>
-            <input type="number" step="0.01" name="alcohol" required>
-
-            <button type="submit">Predict Quality</button>
+            {% for label in [
+                "Fixed Acidity", "Volatile Acidity", "Citric Acid",
+                "Residual Sugar", "Chlorides", "Free Sulfur Dioxide",
+                "Total Sulfur Dioxide", "Density", "pH", "Sulphates", "Alcohol"
+            ] %}
+                <div class="form-group">
+                    <label>{{ label }}:</label>
+                    <input type="number" step="0.01" name="{{ label.lower().replace(' ', '_') }}" placeholder="Enter {{ label }}" required>
+                </div>
+            {% endfor %}
+            <button type="submit">✨ Predict Quality</button>
         </form>
-        <h2>{{ prediction_text }}</h2>
+
+        <!-- Prediction Result -->
+        {% if prediction_text %}
+            <div class="result">
+                <h2>{{ prediction_text }}</h2>
+            </div>
+        {% endif %}
     </div>
 
-    <!-- JavaScript For Theme Toggling -->
     <script>
+        // JavaScript for theme toggling.
         const toggleButton = document.getElementById('theme-toggle');
         const body = document.body;
 
@@ -64,14 +52,11 @@
             body.classList.toggle('dark-mode');
             body.classList.toggle('light-mode');
 
-            // Change Button Text Based On Current Theme
-            if (body.classList.contains('dark-mode')) {
-                toggleButton.innerText = "Switch To Light Mode";
-            } else {
-                toggleButton.innerText = "Switch To Dark Mode";
-            }
+            // Update button text based on the theme.
+            toggleButton.innerText = body.classList.contains('dark-mode')
+                ? "🌞 Switch To Light Mode"
+                : "🌗 Switch To Dark Mode";
         });
     </script>
 </body>
 </html>
-
